@@ -28,13 +28,13 @@ jobs:
           aws-region: sa-east-1
 
       - name: Build Labda package
-          run: |
-            sh scripts/build_lambda_package.sh
+        run: |
+          sh scripts/build_lambda_package.sh
 
       - name: IaC Apply
-         env:
-           COMMAND_IAC: terraform
-         run: |
+        env:
+          COMMAND_IAC: terraform
+        run: |
           cd infraestructure
           $COMMAND_IAC init
           $COMMAND_IAC validate
