@@ -32,18 +32,18 @@ resource "aws_iam_policy" "lambda" {
     "Version": "2012-10-17",
     "Statement": [
         {
-          "Effect": "Allow",
-          "Action": [
-              "logs:CreateLogGroup",
-              "logs:CreateLogStream",
-              "logs:PutLogEvents"
-          ],
-          "Resource": "*"
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
         },
         {
-           "Effect": "Allow",
-           "Action": [
-               "s3:*"
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
             ],
             "Resource": "*"
         },
@@ -51,13 +51,13 @@ resource "aws_iam_policy" "lambda" {
             "Effect": "Allow",
             "Action": [
                 "elasticmapreduce:*"
-             ],
-             "Resource": "*"
+            ],
+            "Resource": "*"
         },
         {
           "Action": "iam:PassRole",
           "Resource": ["arn:aws:iam::241984559879:role/EMR_DefaultRole",
-                       "arn:aws:iam::241984559879:instance-profile/EMR_EC2_DefaultRole"],
+                       "arn:aws:iam::241984559879:role/EMR_EC2_DefaultRole"],
           "Effect": "Allow"
         }
     ]
