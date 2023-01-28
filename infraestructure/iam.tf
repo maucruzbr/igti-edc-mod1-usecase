@@ -3,24 +3,28 @@ resource "aws_iam_role" "lambda" {
 
   assume_role_policy = <<EOF
 {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Action": "sts:AssumeRole",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
-        },
-        "Effect": "Allow",
-        "Sid": "AssumeRole"
-       }
-      ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": "AssumeRole"
+    }
+  ]
 }
 EOF
-  tags               = {
+
+  tags = {
     IES   = "IGTI",
     CURSO = "EDC"
   }
+
 }
+
+
 
 resource "aws_iam_policy" "lambda" {
   name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
@@ -53,13 +57,20 @@ resource "aws_iam_policy" "lambda" {
                 "elasticmapreduce:*"
             ],
             "Resource": "*"
+        },
+        {
+          "Action": "iam:PassRole",
+          "Resource": ["arn:aws:iam::241984559879:role/EMR_DefaultRole",
+                       "arn:aws:iam::241984559879:role/EMR_EC2_DefaultRole"],
+          "Effect": "Allow"
         }
     ]
 }
 EOF
 }
 
+
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
-  policy_arn = aws_iam_policy.lambda.arn
   role       = aws_iam_role.lambda.name
+  policy_arn = aws_iam_policy.lambda.arn
 }
