@@ -14,7 +14,7 @@ resource "aws_s3_object" "delta_upsert" {
   etag = filemd5("../etl/02_delta_spark_upsert.py")
 }
 
-resource "aws_s3_object" "delta_insert" {
+resource "aws_s3_object" "job_spark" {
   bucket = aws_s3_bucket.dl-edc-mod1-usecase.id
   key = "emr-code/pyspark/job_spark.py"
   acl = "private"
