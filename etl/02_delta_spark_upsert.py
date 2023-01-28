@@ -25,7 +25,7 @@ from delta.tables import *
 logger.info("Produzindo novos dados...")
 enemnovo = (
     spark.read.format("delta")
-    .load("s3://edc-igti-datalake1/staging/enem/")
+    .load("s3://edc-igti-datalake1/staging-mod1/enem/")
 )
 
 # Define algumas inscricoes (chaves) que serao alteradas
@@ -87,7 +87,7 @@ enemnovo = enemnovo.withColumn("NO_MUNICIPIO_RESIDENCIA", lit("NOVA CIDADE")).wi
 
 
 logger.info("Pega os dados do Enem velhos na tabela Delta...")
-enemvelho = DeltaTable.forPath(spark, "s3://edc-igti-datalake1/staging/enem/")
+enemvelho = DeltaTable.forPath(spark, "s3://edc-igti-datalake1/staging-mod1/enem/")
 
 
 logger.info("Realiza o UPSERT...")
