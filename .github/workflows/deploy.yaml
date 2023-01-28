@@ -1,4 +1,4 @@
-name: Test on PR
+name: Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    name: TEst infra on PR
+    name: Test infra on PR
     runs-on: ubuntu-latest
 
     steps:

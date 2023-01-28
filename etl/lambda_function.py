@@ -8,11 +8,11 @@ def handler(event, context):
     client = boto3.client('emr', region_name='us-east-2')
 
     cluster_id = client.run_job_flow(
-        Name='EMR-Ney-IGTI-delta',
+        Name='EMR-IGTI-delta-EDC',
         ServiceRole='EMR_DefaultRole',
         JobFlowRole='EMR_EC2_DefaultRole',
         VisibleToAllUsers=True,
-        LogUri='s3://datalake-ney-igti-edc-tf/emr-logs',
+        LogUri='s3://datalake-edc-mod1-usecase/emr-logs',
         ReleaseLabel='emr-6.3.0',
         Instances={
             'InstanceGroups': [
@@ -31,10 +31,10 @@ def handler(event, context):
                     'InstanceCount': 1,
                 }
             ],
-            'Ec2KeyName': 'ney-igti-teste',
+            'Ec2KeyName': 'igti-edc-mod1',
             'KeepJobFlowAliveWhenNoSteps': True,
             'TerminationProtected': False,
-            'Ec2SubnetId': 'subnet-1df20360'
+            'Ec2SubnetId': 'subnet-0288ddd908c8d5618'
         },
 
         Applications=[
@@ -94,7 +94,7 @@ def handler(event, context):
                          '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog',
                          '--master', 'yarn',
                          '--deploy-mode', 'cluster',
-                         's3://datalake-ney-igti-edc-tf/emr-code/pyspark/01_delta_spark_insert.py'
+                         's3://datalake-edc-mod1-usecase/emr-code/pyspark/01_delta_spark_insert.py'
                          ]
             }
         },
@@ -110,7 +110,7 @@ def handler(event, context):
                              'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog',
                              '--master', 'yarn',
                              '--deploy-mode', 'cluster',
-                             's3://datalake-ney-igti-edc-tf/emr-code/pyspark/02_delta_spark_upsert.py'
+                             's3://datalake-edc-mod1-usecase/emr-code/pyspark/02_delta_spark_upsert.py'
                              ]
                 }
             }],
