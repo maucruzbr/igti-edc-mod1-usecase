@@ -87,7 +87,7 @@ enemnovo = enemnovo.withColumn("NO_MUNICIPIO_RESIDENCIA", lit("NOVA CIDADE")).wi
 
 
 logger.info("Pega os dados do Enem velhos na tabela Delta...")
-enemvelho = DeltaTable.forPath(spark, "s3://edc-igti-datalake1/-mod1-edc/enem/")
+enemvelho = DeltaTable.forPath(spark, "s3://edc-igti-datalake1/staging-mod1-edc/enem/")
 
 
 logger.info("Realiza o UPSERT...")
