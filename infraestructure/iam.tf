@@ -53,12 +53,6 @@ resource "aws_iam_policy" "lambda" {
                 "elasticmapreduce:*"
             ],
             "Resource": "*"
-        },
-        {
-          "Action": "iam:PassRole",
-          "Resource": ["arn:aws:iam::241984559879:role/EMR_DefaultRole",
-                       "arn:aws:iam::241984559879:role/EMR_EC2_DefaultRole"],
-          "Effect": "Allow"
         }
     ]
 }
