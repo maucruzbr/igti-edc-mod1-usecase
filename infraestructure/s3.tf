@@ -40,7 +40,7 @@ resource "aws_s3_bucket_public_access_block" "bucket_public_access_block" {
 
 
 resource "aws_s3_bucket" "stream" {
-  bucket = "igti-edc-streaming-bucket"
+  bucket = "igti-edc-streaming-bucket-mbr"
 
   tags = {
     IES   = "IGTI",
