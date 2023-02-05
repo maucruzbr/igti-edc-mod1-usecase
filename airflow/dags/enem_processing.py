@@ -56,7 +56,7 @@ def pipeline_enem():
                         'InstanceCount': 1,
                     }
                 ],
-                'Ec2KeyName': 'edc-igti-teste',
+                'Ec2KeyName': 'edc-igti-airflow-test',
                 'KeepJobFlowAliveWhenNoSteps': True,
                 'TerminationProtected': False,
                 'Ec2SubnetId': 'subnet-0b89cca32642f3716'
