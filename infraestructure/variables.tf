@@ -7,7 +7,7 @@ variable "lambda_function_name" {
 }
 
 variable "key_pair_name" {
-  default = "igti-airflow-test"
+  default = "edc-igti-airflow-test"
 }
 
 variable "airflow_subnet_id" {
